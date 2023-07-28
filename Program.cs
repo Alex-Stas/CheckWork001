@@ -20,7 +20,7 @@ void FillRandomArray(string[] array, int lenght)
     Random rnd = new Random();
     char[] alphabet = {'A', 'B', 'C','D', 'E', 'F', 'G', 'H', 'I', 'J','K', 'L', 'M', 'N', 'O','P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}; 
     int alphabetLength = alphabet.Length;
-    for (int i = 0; i < array.GetLength(0); i++)
+    for (int i = 0; i < array.Length; i++)
     {
         
         int wordLength = rnd.Next(1, lenght + 1);
@@ -33,13 +33,41 @@ void FillRandomArray(string[] array, int lenght)
             
     }
 }
-void Print2DArray(string[] array)
+void PrintArray(string[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
         Console.WriteLine($"{array[i]}");
     }
+    Console.WriteLine();
 }
+
+string[] Get3Array(string[] array)
+{
+    int count3  = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= 3) count3++; 
+    }
+
+    string[] resultArray = new string [count3];
+    int j = 0;
+
+    for (int i = 0; i < array.Length; i++)
+    {
+        
+        if (array[i].Length <= 3)
+        {
+            resultArray[j] = array[i];
+            j++;
+        }  
+    }
+
+    return resultArray;
+
+}
+
+
 
 
 
@@ -48,5 +76,10 @@ int wordLength = InputNum("Введите максимальную длинну 
 string[] myArray = CreateArray(arraySize);
 
 FillRandomArray(myArray, wordLength);
-Print2DArray(myArray);
+PrintArray(myArray);
+
+string[] resultArray = Get3Array(myArray);
+
+PrintArray(resultArray);
+
 
