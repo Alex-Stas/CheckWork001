@@ -289,13 +289,15 @@ void Fill2DArray(string[] array, int lenght)
     
     Random rnd = new Random();
     char[] alphabet = {'A', 'B', 'C','D', 'E', 'F', 'G', 'H', 'I', 'J','K', 'L', 'M', 'N', 'O','P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'}; 
+    int alphabetLength = alphabet.Length;
     for (int i = 0; i < array.GetLength(0); i++)
     {
+        
         int wordLength = rnd.Next(1, lenght + 1);
         array[i] = String.Empty; 
         for (int j = 1; j <= wordLength; j++)
         {
-            int letter = rnd.Next(0, alphabet.GetLength);
+            int letter = rnd.Next(0, alphabetLength);
             array[i] = array[i] + alphabet[letter];
         }
             
@@ -303,7 +305,7 @@ void Fill2DArray(string[] array, int lenght)
 }
 void Print2DArray(string[] array)
 {
-    for (int i = 0; i < array.GetLength(); i++)
+    for (int i = 0; i < array.Length; i++)
     {
         Console.WriteLine($"{array[i]}");
     }
@@ -313,7 +315,7 @@ void Print2DArray(string[] array)
 
 int arraySize = InputNum("Введите размер массива (количество строк): ");
 int wordLength = InputNum("Введите максимальную длинну слова: ");
-int[] myArray = Create2DArray(arraySize);
+string[] myArray = Create2DArray(arraySize);
 
 Fill2DArray(myArray, wordLength);
 Print2DArray(myArray);
